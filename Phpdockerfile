@@ -1,0 +1,6 @@
+FROM php:fpm-alpine
+# RUN usermod -u dros dros
+RUN apk update && apk add autoconf build-base
+RUN docker-php-ext-install opcache pdo_mysql
+COPY php/ /var/www/php/
+CMD ["php-fpm", "--fpm-config", "/usr/local/etc/php-fpm.conf"]
