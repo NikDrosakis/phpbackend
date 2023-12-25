@@ -6,7 +6,12 @@ $b= $_REQUEST['b'];
 $c= $_REQUEST['c'];
 $d= $_REQUEST['d'];
 $time=time();
-header('Content-Type: application/json');
+
+
+header("Content-Type: application/json; charset=utf-8");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: PUT, GET, POST");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 /*
 COMMAND LINE
 */
@@ -19,15 +24,18 @@ if($a=='chmod') {
     system ("chmod -R $c $b");
 
 }elseif($_GET['a']=='test'){
-	echo json_encode($_SERVER);
+	echo json_encode($_SERVER, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+
 }elseif($a=='folders'){
+
 $folders= array_filter(glob($_SERVER['DOCUMENT_ROOT']."/portal/build/media/*"), 'is_dir');
 foreach($folders as $name){
 $list[]= basename($name);
 }
-    echo json_encode($list);
+echo json_encode($list,JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+
 }elseif($a=='gallery'){
-    echo json_encode(read_folder($_SERVER['DOCUMENT_ROOT']."/portal/build/media/$b"));
+    echo json_encode(read_folder($_SERVER['DOCUMENT_ROOT']."/portal/build/media/$b"),JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
 }elseif($a=='cli'){
     var_dump(shell_exec($b));
 	
