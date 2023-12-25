@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="7eae8bde-41f9-47f3-ab56-8aaba17bde7c" name="gaiabackend">
+        <fileTransfer rootFolder="/var/www/gaiabackend" accessType="SFTP" host="192.168.2.3" port="22" sshConfigId="c3c8d49d-978d-41bc-9e62-6e9cb230d8c3" sshConfig="root@192.168.2.3:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
